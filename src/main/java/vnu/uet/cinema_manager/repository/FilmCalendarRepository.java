@@ -2,6 +2,7 @@ package vnu.uet.cinema_manager.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import vnu.uet.cinema_manager.entity.Film;
+import vnu.uet.cinema_manager.entity.FilmCalendar;
 
-public interface FilmCalendarRepository extends JpaRepository<Film, Long> {
+public interface FilmCalendarRepository extends JpaRepository<FilmCalendar, Long> {
 }

@@ -36,11 +36,10 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 // URLs matching for access rights
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
+                .antMatchers("/", "/login").permitAll()
                 .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
-                .antMatchers("/uet/**").hasAnyAuthority("ROLE_CUSTOMER")
-                .anyRequest().authenticated()
+                .antMatchers("/customer/**").hasAnyAuthority("ROLE_CUSTOMER")
+//                .anyRequest().authenticated()
                 .and()
                 // form login
                 .csrf().disable().formLogin()

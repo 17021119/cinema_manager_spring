@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class Customer {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String cmnd;
@@ -22,12 +22,28 @@ public class Customer {
     private String phone;
     private String email;
     private String address;
-    private Boolean isMale;
+    private boolean isMale;
     private LocalDate dateRegister;
+
+    public Customer(String cmnd, String fullName, String phone, String email, String address, boolean isMale, LocalDate dateRegister, vnu.uet.cinema_manager.entity.Cart cart, User user) {
+        this.cmnd = cmnd;
+        this.fullName = fullName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.isMale = isMale;
+        this.dateRegister = dateRegister;
+        Cart = cart;
+        this.user = user;
+    }
 
     @OneToOne
     @JoinColumn
     private Cart Cart;
+
+    @OneToOne
+    @JoinColumn
+    private User user;
 
     public Long getId() {
         return id;
@@ -77,11 +93,11 @@ public class Customer {
         this.address = address;
     }
 
-    public Boolean getMale() {
+    public boolean getMale() {
         return isMale;
     }
 
-    public void setMale(Boolean male) {
+    public void setMale(boolean male) {
         isMale = male;
     }
 

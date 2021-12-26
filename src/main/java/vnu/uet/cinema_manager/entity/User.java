@@ -3,6 +3,8 @@ package vnu.uet.cinema_manager.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
@@ -16,23 +18,19 @@ public class User {
     private String username;
     private String password;
     private String roles;
-    private Boolean isActive;
+    private boolean isActive;
 
 
-    private String convertPasswordEncoder(String password){
-        return password;
-    }
-
-    private User (String username, String password, Boolean isActive, String roles){
+    private User (String username, String password, boolean isActive, String roles){
       this.username= username;
-      this.password= convertPasswordEncoder(password);
+      this.password= password;
       this.isActive= isActive;
       this.roles= roles;
     }
 
     public User(String username){
         this.username= username;
-        this.password= convertPasswordEncoder(username);
+        this.password= username;
         this.isActive= true;
         this.roles="ROLE_CUSTOMER";
     }
@@ -40,7 +38,7 @@ public class User {
 
     public User(String username, String roles){
         this.username= username;
-        this.password= convertPasswordEncoder(username);
+        this.password= username;
         this.isActive= true;
         this.roles=roles;
     }
@@ -69,7 +67,7 @@ public class User {
         this.roles = roles;
     }
 
-    public Boolean getActive() {
+    public boolean getActive() {
         return isActive;
     }
 

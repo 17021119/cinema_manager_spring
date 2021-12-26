@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Film</title>
+</head>
+<body>
+</thead>
+<tbody >
+<tr th:each="list :${listFilm}">
+    <td class="className" th:text="${list.name}"></td>
+    <td class="className" th:text="${list.actors}"></td>
+</tr>
+</tbody>
+</body>
+</html>

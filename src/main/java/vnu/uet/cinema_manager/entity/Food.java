@@ -16,5 +16,8 @@ public class Food {
     @GeneratedValue
     private Long id;
     private String name;
-    private String description;
+
+    public Food(String name) {
+        this.name = name;
+    }
 }

@@ -1,6 +1,6 @@
 package vnu.uet.cinema_manager.model;
 
-public enum Time {
+public enum TimeCalendar {
 
     CASE_1("7:30 AM - 9:30 AM"),
     CASE_2("10:30 AM - 12:30 AM"),
@@ -11,7 +11,7 @@ public enum Time {
     
     private String s;
 
-    Time(String s) {
+    TimeCalendar(String s) {
         this.s = s;
     }
 
@@ -19,17 +19,17 @@ public enum Time {
         return s;
     }
 
-    public static String getString(Time Time) {
-        for (Time s : Time.values()) {
-            if (s.equals(Time)) {
+    public static String getString(TimeCalendar TimeCalendar) {
+        for (TimeCalendar s : TimeCalendar.values()) {
+            if (s.equals(TimeCalendar)) {
                 return s.getS();
             }
         }
         return CASE_1.getS();
     }
 
-    public static Time convertToEnum(String str) {
-        for (Time s : Time.values()) {
+    public static TimeCalendar convertToEnum(String str) {
+        for (TimeCalendar s : TimeCalendar.values()) {
             if (str.equals(s.toString())) {
                 return s;
             }

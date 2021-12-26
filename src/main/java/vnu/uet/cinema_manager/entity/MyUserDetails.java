@@ -14,7 +14,7 @@ public class MyUserDetails implements UserDetails {
 
     private String username;
     private String password;
-    private Boolean isActive;
+    private boolean isActive;
     private List<GrantedAuthority> authorities;
 
     private PasswordEncoder passwordEncoder;

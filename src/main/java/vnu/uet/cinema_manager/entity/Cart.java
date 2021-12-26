@@ -15,4 +15,5 @@ public class Cart {
     @Id
     @GeneratedValue
     private Long id;
+
 }

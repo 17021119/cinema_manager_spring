@@ -17,7 +17,6 @@ public class Ticket {
     @GeneratedValue
     private Long id;
 
-    private BigDecimal price;
     private Integer slotLocation;
     private LocalDate dateSell;
 
@@ -25,4 +24,9 @@ public class Ticket {
     @JoinColumn
     private FilmCalendar filmCalendar;
 
+    public Ticket(Integer slotLocation, LocalDate dateSell, FilmCalendar filmCalendar) {
+        this.slotLocation = slotLocation;
+        this.dateSell = dateSell;
+        this.filmCalendar = filmCalendar;
+    }
 }
