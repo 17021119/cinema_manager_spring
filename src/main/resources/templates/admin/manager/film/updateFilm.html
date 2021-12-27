@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>update Film</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/saveNewFilm}" th:object="${film}" method="POST">
+    <input type="hidden" th:field="*{id}" >
+    <input type="text" th:field="*{name}" placeholder="name">
+    <input type="text" th:field="*{actors}" placeholder="actors">
+    <input type="text" th:field="*{category}" placeholder="category">
+    <input type="date" th:field="*{openDay}" placeholder="openDay">
+    <input type="text" th:field="*{time}" placeholder="time">
+    <input type="text" th:field="*{price}" placeholder="price">
+    <input type="description" th:field="*{description}" placeholder="description">
+    <!--<input type="file" th:field="*{banner}" placeholder="banner">-->
+
+    <button type="submit">Update Film</button>
+    <hr>
+    <a th:href="@{/admin/manager/film}">Back to list film</a>
+</form>
+</body>
+</html>

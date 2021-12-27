@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@NoArgsConstructor
 public class Film {
 
     @Id
@@ -37,6 +36,89 @@ public class Film {
         this.time = time;
         this.price = price;
         this.description = description;
+        this.banner = banner;
+    }
+
+    public Film() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(String directors) {
+        this.directors = directors;
+    }
+
+    public String getActors() {
+        return actors;
+    }
+
+    public void setActors(String actors) {
+        this.actors = actors;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public LocalDate getOpenDay() {
+        return openDay;
+    }
+
+    public void setOpenDay(LocalDate openDay) {
+        this.openDay = openDay;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getBanner() {
+        return banner;
+    }
+
+    public void setBanner(String banner) {
         this.banner = banner;
     }
 }

@@ -6,6 +6,7 @@ import vnu.uet.cinema_manager.entity.Film;
 import vnu.uet.cinema_manager.repository.FilmRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FilmService {
@@ -19,6 +20,25 @@ public class FilmService {
 
     public List<Film> getAllFilm(){
         return  filmRepository.findAll();
+    }
+
+    public void saveFilm(Film film){
+        filmRepository.save(film);
+    }
+
+    public Film getFilmById(Long id){
+        Optional<Film> optional= filmRepository.findById(id);
+        Film film= null;
+        if(optional.isPresent()){
+            film= optional.get();
+        }else{
+            throw new RuntimeException("Film not found for id: "+ id);
+        }
+        return film;
+    }
+
+    public void deletFilm(Long id){
+        filmRepository.deleteById(id);
     }
 
 }

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Film</title>
+</head>
+<body>
+
+<table>
+    <tbody >
+        <tr th:each="element :${listFilm}">
+            <td th:text="${element.name}"></td>
+            <td>
+                <a th:href="@{/admin/manager/showFormUpdateFilm/{id}(id=${element.id}) }">update</a>
+                <a th:href="@{/admin/manager/delete/{id}(id=${element.id}) }">delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+</html>

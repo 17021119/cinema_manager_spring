@@ -14,6 +14,4 @@ public class AdminService {
         this.adminRepository= adminRepository;
     }
 
-
-
 }
