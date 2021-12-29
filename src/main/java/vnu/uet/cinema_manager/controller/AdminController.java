@@ -33,47 +33,18 @@ public class AdminController {
     @GetMapping("/admin/manager/film")
     public String getFilm(Model model){
         model.addAttribute("listFilm", filmService.getAllFilm());
-        return "admin/manager/film/film";
+        return "admin/manager/film";
     }
 
-    @GetMapping("/admin/manager/addFilm")
-    public String addFilmPage(Model model){
-        Film film= new Film();
-        film.setName("this is film");
-        model.addAttribute("film", film);
-        return "admin/manager/film/addFilm";
+    @GetMapping("/admin/manager/getFilmById")
+    @ResponseBody
+    public Film getFilmById(Long id){
+        return filmService.getFilmById(id);
     }
 
-    @PostMapping("/saveNewFilm")
-    public String saveNewFilm(@ModelAttribute("film") Film film){
-        System.out.println("saveNewFilm id: "+ film.getId());
-        filmService.saveFilm(film);
-        return "redirect:/admin/manager/film";
-    }
-
-
-    @PostMapping("/saveFilm")
+    @PostMapping("/admin/manager/saveFilm")
     public String saveFilm(Film film){
-        System.out.println(film.getOpenDay());
         filmService.saveFilm(film);
-
-        return "redirect:/admin/manager/film";
-    }
-
-    @GetMapping("/admin/manager/showFormUpdateFilm/{id}")
-    public String showFormUpdateFilm(@PathVariable(value= "id") long id, Model model){
-        // get employee from the service
-        Film film= filmService.getFilmById(id);
-        System.out.println("showFormUpdateFilm id:"+ film.getId());
-        // set  employee as a model
-        model.addAttribute("film", film);
-        return "admin/manager/film/updateFilm";
-    }
-
-    @GetMapping("admin/manager/delete/{id}")
-    public String deleteFilm(@PathVariable( value = "id") long id){
-        filmService.deletFilm(id);
-
         return "redirect:/admin/manager/film";
     }
 

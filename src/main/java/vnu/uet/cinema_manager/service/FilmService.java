@@ -23,6 +23,7 @@ public class FilmService {
     }
 
     public void saveFilm(Film film){
+        film.setActive(true);
         filmRepository.save(film);
     }
 
