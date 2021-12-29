@@ -99,9 +99,11 @@ public class CustomLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHan
         }
 
         if (roles.contains("ROLE_ADMIN")) {
-            url = "/admin";
+            url = "/admin/manager/film";
         } else if (roles.contains("ROLE_CUSTOMER")) {
             url = "/customer";
+        }else if(roles.contains("ROLE_EMPLOYEE")){
+            url = "/admin/manager/filmCalendar";
         }
         return url;
     }

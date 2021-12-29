@@ -51,6 +51,15 @@ public class AdminController {
         return "redirect:/admin/manager/film";
     }
 
+
+    @PostMapping("/saveFilm")
+    public String saveFilm(Film film){
+        System.out.println(film.getOpenDay());
+        filmService.saveFilm(film);
+
+        return "redirect:/admin/manager/film";
+    }
+
     @GetMapping("/admin/manager/showFormUpdateFilm/{id}")
     public String showFormUpdateFilm(@PathVariable(value= "id") long id, Model model){
         // get employee from the service
@@ -67,15 +76,6 @@ public class AdminController {
 
         return "redirect:/admin/manager/film";
     }
-
-
-
-
-
-
-
-
-
 
 
 

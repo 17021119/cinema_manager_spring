@@ -132,7 +132,7 @@ public class InitDBService {
             adminRepository.save(admin1);
 
 
-            User userAdmin2 = new User("phucnt", "ROLE_ADMIN");
+            User userAdmin2 = new User("phucnt", "ROLE_EMPLOYEE");
             userAdmin2.setPassword(convertPasswordEncoder(userAdmin2.getPassword()));
             Admin admin2 = new Admin("Nguyễn Thị Phúc", "phucnguyen@gmail.com", userAdmin2);
 
@@ -140,7 +140,7 @@ public class InitDBService {
             adminRepository.save(admin2);
 
 
-            User userAdmin3 = new User("huyenhn", "ROLE_ADMIN");
+            User userAdmin3 = new User("huyenhn", "ROLE_EMPLOYEE");
             userAdmin3.setPassword(convertPasswordEncoder(userAdmin3.getPassword()));
             Admin admin3 = new Admin("Hoàng Ngọc Huyền", "ngochuyen@gamil.com", userAdmin3);
 
@@ -148,7 +148,7 @@ public class InitDBService {
             adminRepository.save(admin3);
 
 
-            User userAdmin4 = new User("linhnn", "ROLE_ADMIN");
+            User userAdmin4 = new User("linhnn", "ROLE_EMPLOYEE");
             userAdmin4.setPassword(convertPasswordEncoder(userAdmin4.getPassword()));
             Admin admin4 = new Admin("Nguyễn Ngọc Linh", "linhnguyen@gmail.com", userAdmin4);
 
@@ -156,14 +156,14 @@ public class InitDBService {
             adminRepository.save(admin4);
 
 
-            User userAdmin5 = new User("minhnh", "ROLE_ADMIN");
+            User userAdmin5 = new User("minhnh", "ROLE_EMPLOYEE");
             userAdmin5.setPassword(convertPasswordEncoder(userAdmin5.getPassword()));
             Admin admin5 = new Admin("Nguyễn Hoàng Minh", "minhnguyen@gamil.com", userAdmin5);
 
             userRepository.save(userAdmin5);
             adminRepository.save(admin5);
 
-            User userAdmin6 = new User("ngocly", "ROLE_ADMIN");
+            User userAdmin6 = new User("ngocly", "ROLE_EMPLOYEE");
             userAdmin6.setPassword(convertPasswordEncoder(userAdmin6.getPassword()));
             Admin admin6 = new Admin("Nguyễn Ngọc Ly", "ngocly@gmail.com", userAdmin6);
 

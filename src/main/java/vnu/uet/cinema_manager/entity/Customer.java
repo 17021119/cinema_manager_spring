@@ -3,6 +3,7 @@ package vnu.uet.cinema_manager.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ public class Customer {
     private String email;
     private String address;
     private boolean isMale;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateRegister;
 
     public Customer(String cmnd, String fullName, String phone, String email, String address, boolean isMale, LocalDate dateRegister, vnu.uet.cinema_manager.entity.Cart cart, User user) {

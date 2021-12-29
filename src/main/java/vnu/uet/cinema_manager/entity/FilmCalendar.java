@@ -3,6 +3,7 @@ package vnu.uet.cinema_manager.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 import vnu.uet.cinema_manager.model.TimeCalendar;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class FilmCalendar {
     @Id
     @GeneratedValue
     private Long id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateCalendar;
     private TimeCalendar timeCalendar;
 

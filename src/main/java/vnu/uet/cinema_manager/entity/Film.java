@@ -3,6 +3,7 @@ package vnu.uet.cinema_manager.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -20,12 +21,14 @@ public class Film {
     private String directors;
     private String actors;
     private String category;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate openDay;
     private String time;
     private BigDecimal price;
     @Lob
     private String description;
     private String banner;
+    private boolean isActive;
 
     public Film(String name, String directors, String actors, String category, LocalDate openDay, String time, BigDecimal price, String description, String banner) {
         this.name = name;
@@ -37,6 +40,7 @@ public class Film {
         this.price = price;
         this.description = description;
         this.banner = banner;
+        this.isActive= true;
     }
 
     public Film() {
@@ -120,5 +124,13 @@ public class Film {
 
     public void setBanner(String banner) {
         this.banner = banner;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

@@ -2,6 +2,7 @@ package vnu.uet.cinema_manager.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -18,6 +19,7 @@ public class Ticket {
     private Long id;
 
     private Integer slotLocation;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateSell;
 
     @ManyToOne
