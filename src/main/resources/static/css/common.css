@@ -29,12 +29,7 @@ ul {
     padding-inline-start: 0px;
 }
 
-table {
-    width: 1200px;
-    max-width: 100%;
-    margin: 0 auto;
-    border: 1px solid var(--black-color);
-}
+
 
 th {
     border: 1px solid var(--black-color);
@@ -234,9 +229,12 @@ td {
 }
 
 table {
+    width: 100%;
+    margin: 0 auto;
+    max-height: calc( 100vh - 40px);
+    overflow-y: scroll;
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
     font-size: 1.2rem;
     border: 1px solid #ddd;
 }

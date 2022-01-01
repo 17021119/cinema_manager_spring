@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Film</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+
+</head>
+
+<body>
+
+<div th:insert="fragments/footer :: header"></div>
+
+<div class="content-right__control">
+    <button class="btn btn-add">
+        Thêm
+    </button>
+</div>
+<table>
+    <tbody>
+
+    <tr th:each="element,iterStat  :${listFood}">
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${element.name}"></td>
+        <td th:text="${element.active}"></td>
+        <td>
+            <a class="btn btn-edit btn-edit-food" th:href="@{/admin/manager/getFoodById/(id=${element.id}) }">Sửa</a>
+            <!--<a  th:href="@{/admin/manager/delete/{id}(id=${element.id}) }">delete</a>-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div class="modal modal-add">
+    <form th:action="@{/admin/manager/saveFood}" method="POST">
+        <div class="modal__container">
+            <div class="modal__close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal__header">
+                <div class="modal__header-title">
+                    Thêm đồ ăn
+                </div>
+
+            </div>
+            <div class="modal__body">
+                <div class="wrap-input">
+                    <div class="wrap-input-item">
+                        <label for="name" class="modal-label">
+                            Tên đồ ăn
+                        </label>
+                        <input type="text" id="name" class="modal-input" name="name">
+                    </div>
+                </div>
+
+                <div class="wrap-input">
+                    <div class="wrap-input-item">
+                        <label for="active" class="modal-label">
+                            Trạng thái
+                        </label>
+                        <select class="modal-input" id="active" name="active">
+                            <option value="true" >Hoạt động</option>
+                            <option value="false">Không hoạt động</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-add" type="submit">
+                    Thêm
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div class="modal modal-edit">
+    <form th:action="@{/admin/manager/saveFood}" method="POST">
+        <div class="modal__container">
+            <div class="modal__close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="modal__header">
+                <div class="modal__header-title">
+                    Sửa thông tin đồ ăn
+                </div>
+
+            </div>
+            <div class="modal__body">
+                <input type="hidden" id="id-food" class="modal-input" name="id">
+                <div class="wrap-input">
+                    <div class="wrap-input-item">
+                        <label for="name-edit" class="modal-label">
+                            Tên đồ ăn
+                        </label>
+                        <input type="text" id="name-edit" class="modal-input" name="name">
+                    </div>
+                </div>
+
+                <div class="wrap-input">
+                    <div class="wrap-input-item">
+                        <label for="active-edit" class="modal-label">
+                            Trạng thái
+                        </label>
+                        <select class="modal-input" id="active-edit" name="active">
+                            <option value="true" >Hoạt động</option>
+                            <option value="false">Không hoạt động</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="btn btn-edit" type="submit">
+                    Lưu
+                </button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+</div>
+
+<div class="modal modal-delete">
+    <div class="modal__container">
+        <div class="modal__close">
+            <i class="fas fa-times"></i>
+        </div>
+        <div class="modal__header">
+            <div class="modal__header-title">
+                Xóa phim
+            </div>
+        </div>
+        <div class="modal__body">
+            <div class="modal__body-question">
+                Bạn có chắn chắn muốn xóa phim?
+            </div>
+            <div class="modal__confirm">
+                <button class="btn btn-yes">Có</button>
+                <button class="btn btn-no">Không</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+
+
+</body>
+<script type="text/javascript" th:src="@{/js/jquery-3.6.0.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/common.js}"></script>
+</html>
+

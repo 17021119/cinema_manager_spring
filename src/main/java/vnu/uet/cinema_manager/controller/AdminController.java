@@ -1,6 +1,7 @@
 package vnu.uet.cinema_manager.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +42,9 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 
     //bill
@@ -103,7 +107,7 @@ public class AdminController {
         User user = new User(userFromThymeleaf.getUsername());
         user.setRoles(userFromThymeleaf.getRoles());
         user.setActive(userFromThymeleaf.getActive());
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userService.saveUser(user);
         customer.setUser(user);
 
@@ -120,6 +124,7 @@ public class AdminController {
         User userInDB= userService.getUserById(userFromThymeleaf.getUsername());
         userInDB.setRoles(userFromThymeleaf.getRoles());
         userInDB.setActive(userFromThymeleaf.getActive());
+
         userService.saveUser(userInDB);
 
         Cart cartInDB= cartService.getCartById(cartFromThymeleaf.getCartId());
@@ -154,6 +159,8 @@ public class AdminController {
     @GetMapping("/admin/manager/filmCalendar")
     public String getFilmCalendar(Model model){
         model.addAttribute("listFilmCalendar", filmCalendarService.getAllFilmCalendar());
+        model.addAttribute("listFilm", filmService.getAllFilm());
+        model.addAttribute("listRoom", roomService.getAllRoom());
         return "admin/manager/filmCalendar";
     }
 
@@ -164,16 +171,35 @@ public class AdminController {
     }
 
     @PostMapping("/admin/manager/saveFilmCalendar")
-    public String saveFilmCalendar(FilmCalendar filmCalendar){
+    public String saveFilmCalendar(FilmCalendar filmCalendar, Long idFilm, Long idRoom){
+        Film filmInDB= filmService.getFilmById(idFilm);
+        Room roomInDB= roomService.getRoomById(idRoom);
+        filmCalendar.setFilm(filmInDB);
+        filmCalendar.setRoom(roomInDB);
+
         filmCalendarService.saveFilmCalendar(filmCalendar);
         return "redirect:/admin/manager/filmCalendar";
     }
+
+    @PostMapping("/admin/manager/editFilmCalendar")
+    public String editFilmCalendar(FilmCalendar filmCalendarFromThymeleaf, Long idFilm, Long idRoom){
+        FilmCalendar filmCalendarInDB= filmCalendarService.getFilmCalendarById(filmCalendarFromThymeleaf.getId());
+        Film filmInDB= filmService.getFilmById(idFilm);
+        Room roomInDB= roomService.getRoomById(idRoom);
+        filmCalendarInDB.setFilm(filmInDB);
+        filmCalendarInDB.setRoom(roomInDB);
+
+        filmCalendarService.saveFilmCalendar(filmCalendarInDB);
+        return "redirect:/admin/manager/filmCalendar";
+    }
+
 
 
     // food
     @GetMapping("/admin/manager/food")
     public String getFood(Model model){
         model.addAttribute("listFood", foodService.getAllFood());
+        model.addAttribute("listFoodDetail", foodDetailService.getAllFoodDetail());
         return "admin/manager/food";
     }
 
@@ -193,6 +219,7 @@ public class AdminController {
     @GetMapping("/admin/manager/foodDetail")
     public String getFoodDetail(Model model){
         model.addAttribute("listFoodDetail", foodDetailService.getAllFoodDetail());
+        model.addAttribute("listFood", foodService.getAllFood());
         return "admin/manager/foodDetail";
     }
 
@@ -203,8 +230,27 @@ public class AdminController {
     }
 
     @PostMapping("/admin/manager/saveFoodDetail")
-    public String saveFoodDetail(FoodDetail foodDetail){
+    public String saveFoodDetail(FoodDetail foodDetail1Thymeleaf, Long idFood){
+
+        Food foodInDB = foodService.getFoodById(idFood);
+        FoodDetail foodDetail= new FoodDetail(
+                foodDetail1Thymeleaf.getSize(),
+                foodDetail1Thymeleaf.getPrice(),
+                foodDetail1Thymeleaf.getCount(),
+                foodDetail1Thymeleaf.isActive(),
+                foodInDB
+        );
         foodDetailService.saveFoodDetail(foodDetail);
+        return "redirect:/admin/manager/foodDetail";
+    }
+
+    @PostMapping("/admin/manager/editFoodDetail")
+    public String editFoodDetail(FoodDetail foodDetailFromThymeleaf, String idFood){
+        FoodDetail foodDetail1InDb= foodDetailService.getFoodDetailById(foodDetailFromThymeleaf.getId());
+        foodDetail1InDb.setCount(foodDetailFromThymeleaf.getCount());
+        foodDetail1InDb.setActive(foodDetailFromThymeleaf.isActive());
+        foodDetail1InDb.setPrice(foodDetailFromThymeleaf.getPrice());
+        foodDetailService.saveFoodDetail(foodDetail1InDb);
         return "redirect:/admin/manager/foodDetail";
     }
     // ticket
