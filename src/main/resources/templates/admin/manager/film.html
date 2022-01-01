@@ -37,7 +37,7 @@
         <td th:text="${element.time}"></td>
         <td th:text="${element.price}"></td>
         <td th:text="${element.description}"></td>
-        <td th:text="${element.isActive}"></td>
+        <td th:text="${element.active}"></td>
         <td>
             <a class="btn btn-edit btn-edit-film" th:href="@{/admin/manager/getFilmById/(id=${element.id}) }">Sửa</a>
             <!--<a  th:href="@{/admin/manager/delete/{id}(id=${element.id}) }">delete</a>-->

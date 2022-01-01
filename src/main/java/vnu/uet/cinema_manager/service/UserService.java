@@ -35,16 +35,14 @@ public class UserService {
         userRepository.save(user);
     }
 
-//    public User getUserById(String username){
-//        Optional<User> optional= userRepository.findById(username);
-//        User user= null;
-//        if(optional.isPresent()){
-//            user= optional.get();
-//        }else{
-//            throw new RuntimeException("User not found for username: "+ username);
-//        }
-//        return user;
-//    }
+    public User getUserById(String username){
+        Optional<User> optional= userRepository.findById(username);
+        User user= null;
+        if(optional.isPresent()){
+            user= optional.get();
+        }
+        return user;
+    }
 
     public void deletUserById(String username){
         userRepository.deleteById(username);

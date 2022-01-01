@@ -662,3 +662,8 @@ tr:nth-child(even) {
     background-color: #6410c4;
 }
 
+.disable-input{
+    pointer-events: none;
+    opacity: 0.5;
+}
+

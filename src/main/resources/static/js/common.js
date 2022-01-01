@@ -73,10 +73,7 @@ $(document).ready(function () {
     });
 
     $('.btn-edit-film').on('click', function (event) {
-        console.log("btn-edit film");
-
         var href= $(this).attr('href');
-        console.log(href);
         $.get(href, function (film, status) {
             console.log(film);
             console.log(status);
@@ -92,7 +89,27 @@ $(document).ready(function () {
             $('#price-film-edit').val(film.price);
             $('#description-film-edit').val(film.description);
         });
+    })
 
-
+    $('.btn-edit-customer').on('click', function (event) {
+        var href= $(this).attr('href');
+        $.get(href, function (customer, status){
+            console.log(customer);
+            $('#id-customer').val(customer.id);
+            $('#id-cart').val(customer.cart.cartId);
+            $('#fullName-edit').val(customer.fullName);
+            $('#username-edit').val(customer.user.username);
+            $('#cmnd-edit').val(customer.cmnd);
+            $('#phone-edit').val(customer.phone);
+            $('#email-edit').val(customer.email);
+            $('#address-edit').val(customer.address);
+            // $('#male-edit').val(customer.male );
+            document.getElementById('male-edit').value= customer.male ;
+            $('#date-register-edit').val(customer.dateRegister);
+            // $('#roles-edit').val(customer.user.roles);
+            document.getElementById('roles-edit').value= customer.user.roles;
+            // $('#is-active-edit').val(customer.user.active).change();
+            document.getElementById('is-active-edit').value= customer.user.active;
+        });
     })
 })

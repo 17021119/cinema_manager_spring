@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import vnu.uet.cinema_manager.entity.*;
 import vnu.uet.cinema_manager.service.*;
 
+import java.time.LocalDate;
+
 @Controller
 public class AdminController {
 
@@ -92,10 +94,42 @@ public class AdminController {
     }
 
     @PostMapping("/admin/manager/saveCustomer")
-    public String saveCustomer(Customer customer){
+    public String saveCustomer(Customer customer, User userFromThymeleaf){
+        // add date register
+        if(customer.getDateRegister()== null){
+            customer.setDateRegister(LocalDate.now());
+        }
+
+        User user = new User(userFromThymeleaf.getUsername());
+        user.setRoles(userFromThymeleaf.getRoles());
+        user.setActive(userFromThymeleaf.getActive());
+
+        userService.saveUser(user);
+        customer.setUser(user);
+
+        Cart cart= new Cart();
+        cartService.saveCart(cart);
+        customer.setCart(cart);
         customerService.saveCustomer(customer);
         return "redirect:/admin/manager/customer";
     }
+
+    @PostMapping("/admin/manager/editCustomer")
+    public String saveCustomer(Customer customer, User userFromThymeleaf, Cart cartFromThymeleaf){
+
+        User userInDB= userService.getUserById(userFromThymeleaf.getUsername());
+        userInDB.setRoles(userFromThymeleaf.getRoles());
+        userInDB.setActive(userFromThymeleaf.getActive());
+        userService.saveUser(userInDB);
+
+        Cart cartInDB= cartService.getCartById(cartFromThymeleaf.getCartId());
+
+        customer.setUser(userInDB);
+        customer.setCart(cartInDB);
+        customerService.saveCustomer(customer);
+        return "redirect:/admin/manager/customer";
+    }
+
 
     // film
     @GetMapping("/admin/manager/film")
@@ -212,7 +246,6 @@ public class AdminController {
         roomService.saveRoom(room);
         return "redirect:/admin/manager/room";
     }
-    //user
     // user
     @GetMapping("/admin/manager/user")
     public String getUser(Model model){
@@ -223,7 +256,7 @@ public class AdminController {
     @GetMapping("/admin/manager/getUserById")
     @ResponseBody
     public User getUserById(String username){
-        return userService.findByUsername(username);
+        return userService.getUserById(username);
     }
 
     @PostMapping("/admin/manager/saveUser")

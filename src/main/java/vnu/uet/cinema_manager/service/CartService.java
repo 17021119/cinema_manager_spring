@@ -32,8 +32,6 @@ public class CartService {
         Cart cart= null;
         if(optional.isPresent()){
             cart= optional.get();
-        }else{
-            throw new RuntimeException("Cart not found for id: "+ id);
         }
         return cart;
     }

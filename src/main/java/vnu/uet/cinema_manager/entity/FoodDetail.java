@@ -22,17 +22,18 @@ public class FoodDetail {
     private Size size;
     private BigDecimal price;
     private Integer count;
-    private boolean isActive;
+    @Column(nullable = false, columnDefinition = "TINYINT(1)")
+    private boolean active;
 
     @ManyToOne
     @JoinColumn
     private Food food;
 
-    public FoodDetail(Size size, BigDecimal price, Integer count, boolean isActive, Food food) {
+    public FoodDetail(Size size, BigDecimal price, Integer count, boolean active, Food food) {
         this.size = size;
         this.price = price;
         this.count = count;
-        this.isActive = isActive;
+        this.active = active;
         this.food = food;
     }
 }
