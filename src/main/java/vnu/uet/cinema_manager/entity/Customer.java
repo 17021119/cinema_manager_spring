@@ -28,6 +28,14 @@ public class Customer {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateRegister;
 
+    @OneToOne
+    @JoinColumn
+    private Cart Cart;
+
+    @OneToOne
+    @JoinColumn
+    private User user;
+
     public Customer(String cmnd, String fullName, String phone, String email, String address, boolean male, LocalDate dateRegister, vnu.uet.cinema_manager.entity.Cart cart, User user) {
         this.cmnd = cmnd;
         this.fullName = fullName;
@@ -39,14 +47,6 @@ public class Customer {
         Cart = cart;
         this.user = user;
     }
-
-    @OneToOne
-    @JoinColumn
-    private Cart Cart;
-
-    @OneToOne
-    @JoinColumn
-    private User user;
 
     public Long getId() {
         return id;

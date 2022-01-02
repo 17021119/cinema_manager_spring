@@ -46,24 +46,29 @@ public class AdminController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private FoodSoldService foodSoldService;
 
     //bill
-    @GetMapping("/admin/manager/bill")
-    public String getBill(Model model){
+
+    @GetMapping("/admin/statistic/food")
+    public String getFoodStatistic(Model model){
+        model.addAttribute("listFood", billService.getAllBill());
+        return "admin/statistic/food";
+    }
+
+    //ticket
+    @GetMapping("/admin/statistic/ticket")
+    public String getTicketStatistic(Model model){
+        model.addAttribute("listTicket", ticketService.getAllTicket());
+        return "admin/statistic/ticket";
+    }
+
+    //bill
+    @GetMapping("/admin/statistic/bill")
+    public String getBillStatistic(Model model){
         model.addAttribute("listBill", billService.getAllBill());
-        return "admin/manager/bill";
-    }
-
-    @GetMapping("/admin/manager/getBillById")
-    @ResponseBody
-    public Bill getBillById(Long id){
-        return billService.getBillById(id);
-    }
-
-    @PostMapping("/admin/manager/saveBill")
-    public String saveBill(Bill bill){
-        billService.saveBill(bill);
-        return "redirect:/admin/manager/bill";
+        return "admin/statistic/bill";
     }
 
     //cart

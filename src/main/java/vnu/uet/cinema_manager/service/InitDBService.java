@@ -23,6 +23,8 @@ public class InitDBService {
 
     private TicketService ticketService;
 
+
+
     @Autowired
     public void setTicketService(TicketService ticketService) {
         this.ticketService = ticketService;
@@ -118,6 +120,13 @@ public class InitDBService {
     @Autowired
     public void setFilmCalendarService(FilmCalendarService filmCalendarService) {
         this.filmCalendarService = filmCalendarService;
+    }
+
+    private FoodSoldService foodSoldService;
+
+    @Autowired
+    public void setFoodSoldService(FoodSoldService foodSoldService) {
+        this.foodSoldService = foodSoldService;
     }
 
     @PostConstruct // gọi khi các bean được khởi tạo hết
@@ -413,6 +422,8 @@ public class InitDBService {
             ticketService.createTicketWhenCreateFilmCalendar(filmCalendar1);
 
             System.out.println("Success init film calendar");
+
+
 
 
         }
