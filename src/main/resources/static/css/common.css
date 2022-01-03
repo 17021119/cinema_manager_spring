@@ -694,7 +694,7 @@ section{
     right: 0;
     bottom: 0;
     height: 100vh;
-    background: url('https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg') no-repeat center;
+    background: url('../img/back_login.jpg') no-repeat center;
     background-size: cover;
 
 }
