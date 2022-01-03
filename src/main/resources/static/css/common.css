@@ -672,3 +672,68 @@ section{
     min-height: 577px;
 }
 
+/*login, register*/
+
+.title{
+    font-size: 30px;
+    margin: 15px auto 22px;
+    font-weight: bold;
+
+}
+
+.center{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-login{
+
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    background: url('https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_FMjpg_UX1000_.jpg') no-repeat center;
+    background-size: cover;
+
+}
+
+.form-login-overlay{
+    background: rgba(0,0,0 ,0.65);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.modal-login{
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.modal-login-center{
+    padding: 20px 30px;
+    width: 400px;
+}
+.btn-login{
+    border-radius: 28px;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 60px;
+}
+
+.footer{
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: #6a6a6a;
+}
+.footer__link{
+    text-decoration: none;
+    color: #6a6a6a;
+}
+
+/*end login, register*/
