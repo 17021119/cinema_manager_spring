@@ -22,6 +22,7 @@
         <thead>
             <tr>
                 <th>Số thứ tự</th>
+                <th>Ảnh giới thiệu</th>
                 <th>Tên phim</th>
                 <th>Tên đạo diễn</th>
                 <th>Các diễn viên</th>
@@ -38,6 +39,7 @@
 
         <tr th:each="element,iterStat  :${listFilm}">
             <td th:text="${iterStat.count}"></td>
+            <td><img class="img-table" width="150"  th:src="${element.banner}" alt=""></td>
             <td th:text="${element.name}"></td>
             <td th:text="${element.directors}"></td>
             <td th:text="${element.actors}"></td>
@@ -300,6 +302,9 @@
         width: 100%;
         font-size: 13px;
         height: 60px;
+    }
+    .img-table{
+
     }
 </style>
 </html>

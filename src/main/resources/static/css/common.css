@@ -109,7 +109,9 @@ td {
 .modal__body {
     padding: 16px;
 }
-
+.title-auth{
+    color: #454545;
+}
 .modal__container {
     background-color: var(--white-color);
     margin: auto;
@@ -134,6 +136,20 @@ td {
     padding: 6px;
     font-size: 1.3rem;
     margin-bottom: 12px;
+}
+
+.modal-input-auth{
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #cccccc;
+    color:#84878d;
+
+}
+
+.modal-label-auth{
+    color:#84878d;
 }
 
 .wrap-input {
@@ -670,6 +686,7 @@ tr:nth-child(even) {
 
 section{
     min-height: 577px;
+    margin: 0 5px;
 }
 
 /*login, register*/

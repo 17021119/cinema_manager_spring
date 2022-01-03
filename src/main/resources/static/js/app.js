@@ -19,8 +19,8 @@
 
 		$(".slider").flexslider({
 			controlNav: false,
-			prevText:'<i class="fa fa-chevron-left"></i>',
-			nextText:'<i class="fa fa-chevron-right"></i>',
+			prevText:'<i class="fas fa-chevron-left"></i>',
+			nextText:'<i class="fas fa-chevron-right"></i>',
 		});
 		if( $(".map").length ) {
 			$('.map').gmap3({

@@ -38,8 +38,12 @@ public class SecurityConfigurer extends WebSecurityConfigurerAdapter {
                 // URLs matching for access rights
 
                 .antMatchers("/", "/login", "/resource/**").permitAll()
-                .antMatchers("/admin/**").hasAnyAuthority("ROLE_EMPLOYEE")
                 .antMatchers("/admin/**").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/admin/statistic/**",
+                        "/admin/manager/filmCalendar",
+                        "/admin/manager/foodDetail",
+                        "/admin/manager/customer",
+                        "/admin/manager/room").hasAnyAuthority("ROLE_EMPLOYEE")
                 .antMatchers("/customer/**").hasAnyAuthority("ROLE_CUSTOMER")
 //                .anyRequest().authenticated()
                 .and()

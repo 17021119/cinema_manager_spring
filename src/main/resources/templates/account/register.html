@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title >Đăng ký</title>
     <link rel="stylesheet" th:href="@{/css/common.css}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
@@ -19,17 +19,17 @@
         <div class="modal-login center">
             <form class="modal-login-center" th:action="@{/login}" method="post" style="max-width: 350px; margin: 0 auto ">
                 <div class="center">
-                    <div class="title">Đăng ký</div>
+                    <div class="title title-auth">Đăng ký</div>
                 </div>
                 <div>
                     <div class="wrap-input">
                         <div class="wrap-input-item ">
-                            <label for="usernmae" class="modal-label">
+                            <label for="usernmae" class="modal-label modal-label-auth">
                                 Tên đăng nhập
                             </label>
                             <input type="text"
                                    id="usernmae"
-                                   class="modal-input"
+                                   class="modal-input modal-input-auth"
                                    name="username"
                                    required
                                    autofocus
@@ -38,24 +38,24 @@
                     </div>
                     <div class="wrap-input">
                         <div class="wrap-input-item ">
-                            <label for="password" class="modal-label">
+                            <label for="password" class="modal-label modal-label-auth">
                                 Mật khẩu
                             </label>
                             <input type="password"
                                    id="password"
-                                   class="modal-input"
+                                   class="modal-input modal-input-auth"
                                    name="password"
                                    required autofocus placeholder="Mật khẩu">
                         </div>
                     </div>
                     <div class="wrap-input">
                         <div class="wrap-input-item ">
-                            <label for="re-password" class="modal-label">
+                            <label for="re-password" class="modal-label modal-label-auth">
                                 Nhập lại mật khẩu
                             </label>
                             <input type="password"
                                    id="re-password"
-                                   class="modal-input"
+                                   class="modal-input modal-input-auth"
                                    name="rePassword"
                                    required autofocus placeholder="Nhập lại mật khẩu">
                         </div>
