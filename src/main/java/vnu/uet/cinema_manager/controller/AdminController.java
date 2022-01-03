@@ -53,7 +53,7 @@ public class AdminController {
 
     @GetMapping("/admin/statistic/food")
     public String getFoodStatistic(Model model){
-        model.addAttribute("listFood", billService.getAllBill());
+        model.addAttribute("listFoodSold", foodSoldService.getAllFoodSold());
         return "admin/statistic/food";
     }
 
@@ -67,7 +67,7 @@ public class AdminController {
     //bill
     @GetMapping("/admin/statistic/bill")
     public String getBillStatistic(Model model){
-        model.addAttribute("listBill", billService.getAllBill());
+        model.addAttribute("listTicketSold", ticketService.getAllTicketSold());
         return "admin/statistic/bill";
     }
 

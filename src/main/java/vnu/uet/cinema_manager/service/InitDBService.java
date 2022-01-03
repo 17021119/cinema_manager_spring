@@ -12,6 +12,7 @@ import vnu.uet.cinema_manager.repository.*;
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class InitDBService {
@@ -424,11 +425,108 @@ public class InitDBService {
             System.out.println("Success init film calendar");
 
 
+            // ticket, food sold
 
+            FoodSold foodSold1= new FoodSold(foodDetails9_2, 1L);
+            FoodSold foodSold2= new FoodSold(foodDetails9_1, 2L);
+            FoodSold foodSold3= new FoodSold(foodDetails7_2, 1L);
+            FoodSold foodSold4= new FoodSold(foodDetails6_2, 2L);
+            FoodSold foodSold5= new FoodSold(foodDetails5_2, 5L);
+            FoodSold foodSold6= new FoodSold(foodDetails5_3, 1L);
+            FoodSold foodSold7= new FoodSold(foodDetails4_1, 1L);
+            FoodSold foodSold8= new FoodSold(foodDetails3_3, 2L);
+            FoodSold foodSold9= new FoodSold(foodDetails2_1, 3L);
+            FoodSold foodSold10= new FoodSold(foodDetails1_1, 4L);
+            FoodSold foodSold11= new FoodSold(foodDetails6_2, 5L);
+            FoodSold foodSold12= new FoodSold(foodDetails6_2, 1L);
 
+            foodSoldService.saveFoodSold(foodSold1);
+            foodSoldService.saveFoodSold(foodSold2);
+            foodSoldService.saveFoodSold(foodSold3);
+            foodSoldService.saveFoodSold(foodSold4);
+            foodSoldService.saveFoodSold(foodSold5);
+            foodSoldService.saveFoodSold(foodSold6);
+            foodSoldService.saveFoodSold(foodSold7);
+            foodSoldService.saveFoodSold(foodSold8);
+            foodSoldService.saveFoodSold(foodSold9);
+            foodSoldService.saveFoodSold(foodSold10);
+            foodSoldService.saveFoodSold(foodSold11);
+            foodSoldService.saveFoodSold(foodSold12);
+                
+            List<Ticket> ticketList= ticketService.getAllTicket();
+            Ticket ticket1= ticketList.get(27);
+            ticket1.setFoodSold(foodSold1);
+            ticket1.setDateSell(LocalDate.of(2021,12, 1));
+            ticket1.setCart(cart3);
+            ticketService.saveTicket(ticket1);
+
+            Ticket ticket2= ticketList.get(23);
+            ticket2.setFoodSold(foodSold2);
+            ticket2.setDateSell(LocalDate.of(2021,12, 2));
+            ticket2.setCart(cart7);
+            ticketService.saveTicket(ticket2);
+
+            Ticket ticket3= ticketList.get(14);
+            ticket3.setFoodSold(foodSold3);
+            ticket3.setDateSell(LocalDate.of(2021,12, 3));
+            ticket3.setCart(cart1);
+            ticketService.saveTicket(ticket3);
+
+            Ticket ticket4= ticketList.get(32);
+            ticket4.setFoodSold(foodSold4);
+            ticket4.setDateSell(LocalDate.of(2021,12, 4));
+            ticket4.setCart(cart1);
+            ticketService.saveTicket(ticket4);
+
+            Ticket ticket5= ticketList.get(34);
+            ticket5.setFoodSold(foodSold5);
+            ticket5.setDateSell(LocalDate.of(2021,12, 5));
+            ticket5.setCart(cart2);
+            ticketService.saveTicket(ticket5);
+
+            Ticket ticket6= ticketList.get(15);
+            ticket6.setFoodSold(foodSold6);
+            ticket6.setDateSell(LocalDate.of(2021,12, 6));
+            ticket6.setCart(cart2);
+            ticketService.saveTicket(ticket6);
+
+            Ticket ticket7= ticketList.get(22);
+            ticket7.setFoodSold(foodSold7);
+            ticket7.setDateSell(LocalDate.of(2021,12, 6));
+            ticket7.setCart(cart1);
+            ticketService.saveTicket(ticket7);
+
+            Ticket ticket8= ticketList.get(38);
+            ticket8.setFoodSold(foodSold8);
+            ticket8.setDateSell(LocalDate.of(2021,12, 8));
+            ticket8.setCart(cart5);
+            ticketService.saveTicket(ticket8);
+
+            Ticket ticket9= ticketList.get(16);
+            ticket9.setFoodSold(foodSold9);
+            ticket9.setDateSell(LocalDate.of(2021,12, 9));
+            ticket9.setCart(cart6);
+            ticketService.saveTicket(ticket9);
+
+            Ticket ticket10= ticketList.get(10);
+            ticket10.setFoodSold(foodSold10);
+            ticket10.setDateSell(LocalDate.of(2021,12, 10));
+            ticket10.setCart(cart2);
+            ticketService.saveTicket(ticket10);
+
+            Ticket ticket11= ticketList.get(19);
+            ticket11.setFoodSold(foodSold11);
+            ticket11.setDateSell(LocalDate.of(2021,12, 11));
+            ticket11.setCart(cart5);
+            ticketService.saveTicket(ticket11);
+
+            Ticket ticket12= ticketList.get(30);
+            ticket12.setFoodSold(foodSold12);
+            ticket12.setDateSell(LocalDate.of(2021,12, 12));
+            ticket12.setCart(cart2);
+            ticketService.saveTicket(ticket12);
+            System.out.println("Success init ticket");
         }
-
-
     }
 
 }

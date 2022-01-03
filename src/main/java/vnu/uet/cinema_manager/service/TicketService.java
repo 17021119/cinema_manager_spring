@@ -28,6 +28,10 @@ public class TicketService {
         }
     }
 
+    public List<Ticket> getAllTicketSold(){
+        return ticketRepository.getAllByDateSellNotNull();
+    }
+
     public List<Ticket> getAllTicket(){
         return  ticketRepository.findAll();
     }
